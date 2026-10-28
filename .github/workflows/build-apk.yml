@@ -1,0 +1,36 @@
+name: Build APK
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: cli/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: android-actions/setup-android@v3
+      - name: Install Android tools
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - name: Install dependencies
+        working-directory: cli
+        run: npm ci --ignore-scripts
+      - name: Build APK
+        shell: pwsh
+        run: ./build.ps1 -SkipInstall
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LeaveSchool-APK
+          path: dist/*.apk
+          if-no-files-found: error

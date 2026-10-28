@@ -1,0 +1,31 @@
+# ---------- 依赖与缓存 ----------
+node_modules/
+cli/node_modules/
+.npm-cache/
+cli/.cache/
+*.log
+
+# ---------- 构建产物（可由 build.ps1 重新生成）----------
+cli/dist/
+cli/src/
+android/build/
+android/build-*/
+android/assets/
+dist/*.apk
+dist/*.idsig
+
+# ---------- 系统 / 编辑器 ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+*.iml
+local.properties
+.vscode/
+*.suo
+*.user
+
+# Local signing credentials
+*.jks
+*.keystore
+

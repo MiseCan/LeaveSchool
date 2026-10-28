@@ -1,0 +1,22 @@
+{
+    "name": "请假助手",
+    "appid": "__UNI__A6877D0",
+    "description": "请假记录管理",
+    "versionName": "1.1.0",
+    "versionCode": "101",
+    "transformPx": false,
+    "app-plus": {
+        "usingComponents": true,
+        "compilerVersion": 3
+    },
+    "h5": {
+        "title": "请假助手",
+        "router": {
+            "mode": "hash",
+            "base": "./"
+        }
+    },
+    "uniStatistics": {
+        "enable": false
+    }
+}
